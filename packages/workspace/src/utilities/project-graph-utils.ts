@@ -141,6 +141,12 @@ function collectDependentProjectNodesNames(
       continue;
     }
 
+    if (dependencyNodeNames.has(dependencyName)) {
+      // node's dependencies have already been explored
+      // this probably means that the node is part of a circular dependency
+      continue;
+    }
+
     dependencyNodeNames.add(dependencyName);
 
     // Get the dependencies of the dependencies
